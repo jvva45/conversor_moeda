@@ -5,7 +5,6 @@ $moedas = json_decode($moedasJson, true);
 
 ?>
 
-
 <div class="card p-4 shadow converter-card">
 
 
@@ -21,8 +20,10 @@ $moedas = json_decode($moedasJson, true);
             <select id="moeda-origem" class="form-select currency-select ">
                 <?php
                 foreach ($moedas as $codigo => $nome) {
-                    echo "<option value=\"$codigo\">$codigo - $nome</option>";
+                    $sigla = substr($codigo, 0, 3);
+                    echo "<option value=\"$sigla\">$sigla</option>";
                 }
+
                 ?>
             </select>
         </div>
@@ -44,15 +45,17 @@ $moedas = json_decode($moedasJson, true);
                 id="resultado"
                 type="text"
                 class="form-control form-control-lg bg-transparent text-success border-0"
-                
+
                 disabled>
 
 
             <select id="moeda-destino" class="form-select currency-select">
                 <?php
                 foreach ($moedas as $codigo => $nome) {
-                    echo "<option value=\"$codigo\">$codigo - $nome</option>";
+                    $sigla = substr($codigo, 0, 3);
+                    echo "<option value=\"$sigla\">$sigla</option>";
                 }
+
                 ?>
             </select>
         </div>

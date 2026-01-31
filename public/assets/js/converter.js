@@ -57,4 +57,24 @@ $(document).ready(function () {
     $('#valor').on('input', converter);
     $('#moeda-origem, #moeda-destino').on('change', converter);
 
+    $('.key-btn').on('click', function () {
+
+    const tecla = $(this).text();
+    let valorAtual = $('#valor').val();
+
+    if (tecla === '⌫') {
+        $('#valor').val(valorAtual.slice(0, -1));
+        converter();
+        return;
+    }
+
+    if (tecla === '.' && valorAtual.includes('.')) {
+        return;
+    }
+
+    $('#valor').val(valorAtual + tecla);
+    converter();
+});
+
+
 });
