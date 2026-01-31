@@ -21,20 +21,20 @@ class ConversaoController
         $destino = $_POST['destino'];
 
 
-        // Exemplo em CambioService.php
+    
 if ($origem === $destino) {
     header('Content-Type: application/json; charset=utf-8'); // importante
     echo json_encode([
         'valor_convertido' => number_format($valor, 2, ',', '.'),
         'taxa' => "1 $origem = 1 $destino"
     ]);
-    exit; // garante que nada mais seja enviado
+    exit; 
 }
 
         $cambioService = new CambioService();
         $resultado = $cambioService->converter($origem, $destino, $valor);
 
-        // Define que vai enviar JSON
+    
         header('Content-Type: application/json; charset=utf-8');
 
         if ($resultado === null) {
@@ -47,6 +47,6 @@ if ($origem === $destino) {
             'valor_convertido' => number_format($resultado['valor_convertido'], 2, ',', '.'),
             'taxa' => "1 $origem = {$resultado['taxa']} $destino"
         ]);
-        exit; // garante que nada mais seja impresso
+        exit; 
     }
 }
